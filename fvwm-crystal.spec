@@ -7,7 +7,7 @@ Release:	0.%{pre}.1
 License:	GPL v2
 Group:		X11/Window Managers
 Source0:	ftp://ftp.linuxpl.org/%{name}/tarballs/%{name}-%{version}%{pre}.tar.gz
-# Source0-md5:	accebf80811b82ca5f9599f8ee984d76
+# Source0-md5:	dfc55517825fde61fd12c1b5a36147f5
 URL:		http://www.linuxpl.org/software/fvwm-crystal/
 BuildRequires:	rpm-perlprov
 BuildRequires:	imlib2-devel
