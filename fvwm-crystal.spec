@@ -1,13 +1,13 @@
 Summary:	Theme for fvwm2
 Summary(pl):	Skórka do fvwm2
 Name:		fvwm-crystal
-Version:	20040929
+Version:	20050306
 Release:	1
 License:	GPL v2+
 Group:		X11/Window Managers
 Source0:	http://fvwm-crystal.berlios.de/files/files/fvwm-crystal/%{name}-%{version}.tar.gz
-# Source0-md5:	067558677408dfa2f846a2c343f5705d
-Patch0:		%{name}-paths.patch
+# Source0-md5:	fae57bbbfb34ec7cfde92364b8edad5a
+# Patch0:		%{name}-paths.patch
 URL:		http://fvwm-crystal.berlios.de/
 Requires:	aterm
 Requires:	fvwm2 >= 2.5.8
@@ -18,10 +18,14 @@ Requires:	xdaliclock
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-A theme for fvwm2.
+FVWM-Crystal is a set of configuration files for F* Virtual Window 
+Manager (FVWM), which can create for you a good looking, very 
+functional desktop environment.
 
 %description -l pl
-Skórka do fvwm2, bardzo rozbudowana.
+FVWM-Crystal jest zestawem plików konfiguracyjnych dla F* Virtual 
+Window Manager (FVWM), dziêki którym stworzone mo¿e byæ dobrze 
+wygl±daj±ce i bardzo funkcjonalne ¶rodowisko robocze.
 
 %prep
 %setup -q
