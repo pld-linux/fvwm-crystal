@@ -1,4 +1,4 @@
-Summary:	Skin for fvwm2
+Summary:	Theme for fvwm2
 Summary(pl):	Skórka do fvwm2
 Name:		fvwm-crystal
 Version:	0.8
@@ -6,11 +6,14 @@ Release:	0.1
 License:	GPL
 Group:		X11/Window Managers
 Source0:	http://www.linuxpl.org/software/%{name}/%{name}-%{version}.tar.gz
+Requires:	fvwm2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
+A theme for fvwm2.
 
 %description -l pl
+Skórka do fvwm2, bardzo rozbudowana.
 
 %prep
 %setup -q -n %{name}
@@ -19,8 +22,13 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_datadir}/fvwm/
+cp -r Crystal $RPM_BUILD_ROOT%{_datadir}/fvwm/
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
+%defattr(644,root,root,755)
+#%doc
+%{_datadir}/fvwm/Crystal/
