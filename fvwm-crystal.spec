@@ -7,7 +7,6 @@ License:	GPL v2+
 Group:		X11/Window Managers
 Source0:	http://fvwm-crystal.berlios.de/files/files/fvwm-crystal/%{name}-%{version}.tar.gz
 # Source0-md5:	fae57bbbfb34ec7cfde92364b8edad5a
-# Patch0:		%{name}-paths.patch
 URL:		http://fvwm-crystal.berlios.de/
 Requires:	aterm
 Requires:	fvwm2 >= 2.5.8
@@ -15,6 +14,7 @@ Requires:	fvwm2-perl
 Requires:	habak
 Requires:	scrot
 Requires:	xdaliclock
+Requires:	trayer
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -29,7 +29,6 @@ wygl±daj±ce i bardzo funkcjonalne ¶rodowisko robocze.
 
 %prep
 %setup -q
-# %patch0 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
