@@ -3,7 +3,7 @@ Summary:	Theme for fvwm2
 Summary(pl):	Skórka do fvwm2
 Name:		fvwm-crystal
 Version:	1.0
-Release:	0.%{beta}.1
+Release:	0.%{beta}.2
 License:	GPL v2
 Group:		X11/Window Managers
 Source0:	http://www.linuxpl.org/software/%{name}/files/tarball/%{name}-%{version}-%{beta}.tar.gz
@@ -13,7 +13,7 @@ BuildRequires:	rpm-perlprov
 Requires:	fvwm2 >= 2.5.8
 Requires:	fvwm2-perl
 Requires:	scrot
-Requires:	Eterm
+Requires:	Esetroot
 Requires:	aterm
 Requires:	xdaliclock
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
