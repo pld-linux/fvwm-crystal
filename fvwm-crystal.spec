@@ -1,20 +1,28 @@
+
+#	TODO:	- fix requires, because the new version needs some more,
+#			  like Python for scripts or mpc/xmms-shell for music.
+
+%define	_rc	RC1
+
 Summary:	Theme for fvwm2
 Summary(pl):	Skórka do fvwm2
 Name:		fvwm-crystal
-Version:	20050306
-Release:	1
+Version:	3.0
+Release:	0.%{_rc}.1
+Epoch:		1
 License:	GPL v2+
 Group:		X11/Window Managers
-Source0:	http://fvwm-crystal.berlios.de/files/files/fvwm-crystal/%{name}-%{version}.tar.gz
-# Source0-md5:	fae57bbbfb34ec7cfde92364b8edad5a
+Source0:	http://download.berlios.de/fvwm-crystal/%{name}-%{version}.%{_rc}.tar.gz
+# Source0-md5:	ddc3437763b7dc6b140560a9ba829e8d
 URL:		http://fvwm-crystal.berlios.de/
 Requires:	aterm
-Requires:	fvwm2 >= 2.5.8
+Requires:	fvwm2 >= 2.5.13
 Requires:	fvwm2-perl
 Requires:	habak
 Requires:	scrot
 Requires:	xdaliclock
 Requires:	trayer
+Requires:	rox
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -28,7 +36,7 @@ Window Manager (FVWM), dziêki którym stworzone mo¿e byæ dobrze
 wygl±daj±ce i bardzo funkcjonalne ¶rodowisko robocze.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}.%{_rc}
 
 %install
 rm -rf $RPM_BUILD_ROOT
