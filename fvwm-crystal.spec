@@ -1,11 +1,11 @@
 
-#	TODO:	- fix requires, because the new version needs some more,
-#			  like Python for scripts or mpc/xmms-shell for music.
+#	TODO:	
+#
 
-%define	_rc	RC1
+%define	_rc	RC2
 
-Summary:	Theme for fvwm2
-Summary(pl):	Skórka do fvwm2
+Summary:	Desktop Environment
+Summary(pl):	Graficzne ¶rodowisko robocze
 Name:		fvwm-crystal
 Version:	3.0
 Release:	0.%{_rc}.1
@@ -13,16 +13,22 @@ Epoch:		1
 License:	GPL v2+
 Group:		X11/Window Managers
 Source0:	http://download.berlios.de/fvwm-crystal/%{name}-%{version}.%{_rc}.tar.gz
-# Source0-md5:	ddc3437763b7dc6b140560a9ba829e8d
+# Source0-md5:	798a08fa0273f5994cadc9ba130aeae2
 URL:		http://fvwm-crystal.berlios.de/
 Requires:	aterm
 Requires:	fvwm2 >= 2.5.13
 Requires:	fvwm2-perl
 Requires:	habak
 Requires:	scrot
-Requires:	xdaliclock
 Requires:	trayer
 Requires:	rox
+Requires:	ImageMagick
+Requires:	python
+Requires:	sudo
+Requires:	mpc
+Requires:	mpd
+Requires:	xmms-shell
+Requires:	xscreensaver
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -38,12 +44,21 @@ wygl±daj±ce i bardzo funkcjonalne ¶rodowisko robocze.
 %prep
 %setup -q -n %{name}-%{version}.%{_rc}
 
+%build
+
+%configure --prefix=%{_prefix} 
+
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_datadir}/%{name},%{_bindir}}
 
-install bin/* $RPM_BUILD_ROOT%{_bindir}
-cp -a fvwm/* $RPM_BUILD_ROOT%{_datadir}/%{name}
+%{__make} install  \
+    bindir=$RPM_BUILD_ROOT%{_prefix}/bin \
+    datadir=$RPM_BUILD_ROOT%{_prefix}/share
+    
+sed -i 's#\%\%\%INSTALLPATH\%\%\%#"%{_datadir}/%{name}/fvwm"#g' $RPM_BUILD_ROOT%{_bindir}/%{name}
+
+install -d $RPM_BUILD_ROOT%{_prefix}/share/xsessions/
+install addons/fvwm-crystal.desktop $RPM_BUILD_ROOT%{_prefix}/share/xsessions/fvwm-crystal.desktop
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -54,3 +69,4 @@ rm -rf $RPM_BUILD_ROOT
 %doc doc/* AUTHORS INSTALL COPYING NEWS README
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
+%{_prefix}/share/xsessions/fvwm-crystal.desktop
