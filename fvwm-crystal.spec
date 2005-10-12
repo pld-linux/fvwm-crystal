@@ -19,14 +19,14 @@ Requires:	aterm
 Requires:	fvwm2 >= 2.5.13
 Requires:	fvwm2-perl
 Requires:	habak
-Requires:	scrot
-Requires:	trayer
-Requires:	rox
 Requires:	ImageMagick
-Requires:	python
-Requires:	sudo
 Requires:	mpc
 Requires:	mpd
+Requires:	python
+Requires:	rox
+Requires:	scrot
+Requires:	sudo
+Requires:	trayer
 Requires:	xmms-shell
 Requires:	xscreensaver
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
