@@ -2,18 +2,16 @@
 #	TODO:	
 #
 
-%define	_rc	RC2
-
 Summary:	Desktop Environment
 Summary(pl):	Graficzne ¶rodowisko robocze
 Name:		fvwm-crystal
 Version:	3.0
-Release:	0.%{_rc}.1
+Release:	0.1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Window Managers
-Source0:	http://download.berlios.de/fvwm-crystal/%{name}-%{version}.%{_rc}.tar.gz
-# Source0-md5:	798a08fa0273f5994cadc9ba130aeae2
+Source0:	http://download.berlios.de/fvwm-crystal/%{name}-%{version}.tar.gz
+# Source0-md5:	412f9b6148e35f07b7f1e76759f781b5
 URL:		http://fvwm-crystal.berlios.de/
 Requires:	aterm
 Requires:	fvwm2 >= 2.5.13
@@ -42,7 +40,7 @@ Window Manager (FVWM), dziêki którym stworzone mo¿e byæ dobrze
 wygl±daj±ce i bardzo funkcjonalne ¶rodowisko robocze.
 
 %prep
-%setup -q -n %{name}-%{version}.%{_rc}
+%setup -q -n %{name}-%{version}
 
 %build
 
