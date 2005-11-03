@@ -6,7 +6,7 @@ Summary:	Desktop Environment
 Summary(pl):	Graficzne ¶rodowisko robocze
 Name:		fvwm-crystal
 Version:	3.0
-Release:	0.1
+Release:	0.2
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Window Managers
@@ -66,5 +66,15 @@ rm -rf $RPM_BUILD_ROOT
 # COPYING contains only note, not full GPL text
 %doc doc/* AUTHORS INSTALL COPYING NEWS README
 %attr(755,root,root) %{_bindir}/*
-%{_datadir}/%{name}
+%attr(755,root,root) %{_datadir}/%{name}/fvwm/Applications
+%{_datadir}/%{name}/fvwm/colorsets
+%{_datadir}/%{name}/fvwm/components
+%{_datadir}/%{name}/fvwm/config
+%{_datadir}/%{name}/fvwm/decorations
+%{_datadir}/%{name}/fvwm/icons
+%{_datadir}/%{name}/fvwm/locale
+%{_datadir}/%{name}/fvwm/preferences
+%{_datadir}/%{name}/fvwm/recipes
+%attr(755,root,root) %{_datadir}/%{name}/fvwm/scripts
+%{_datadir}/%{name}/fvwm/wallpapers
 %{_prefix}/share/xsessions/fvwm-crystal.desktop
