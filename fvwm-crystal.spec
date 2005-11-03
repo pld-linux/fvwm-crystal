@@ -1,7 +1,3 @@
-
-#	TODO:	
-#
-
 Summary:	Desktop Environment
 Summary(pl):	Graficzne ¶rodowisko robocze
 Name:		fvwm-crystal
@@ -13,11 +9,12 @@ Group:		X11/Window Managers
 Source0:	http://download.berlios.de/fvwm-crystal/%{name}-%{version}.tar.gz
 # Source0-md5:	412f9b6148e35f07b7f1e76759f781b5
 URL:		http://fvwm-crystal.berlios.de/
+BuildRequires:	sed >= 4.0
+Requires:	ImageMagick
 Requires:	aterm
 Requires:	fvwm2 >= 2.5.13
 Requires:	fvwm2-perl
 Requires:	habak
-Requires:	ImageMagick
 Requires:	mpc
 Requires:	mpd
 Requires:	python
@@ -40,22 +37,21 @@ Window Manager (FVWM), dziêki którym stworzone mo¿e byæ dobrze
 wygl±daj±ce i bardzo funkcjonalne ¶rodowisko robocze.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 
 %build
-
-%configure --prefix=%{_prefix} 
+%configure
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install  \
-    bindir=$RPM_BUILD_ROOT%{_prefix}/bin \
-    datadir=$RPM_BUILD_ROOT%{_prefix}/share
+	bindir=$RPM_BUILD_ROOT%{_prefix}/bin \
+	datadir=$RPM_BUILD_ROOT%{_prefix}/share
     
 sed -i 's#\%\%\%INSTALLPATH\%\%\%#"%{_datadir}/%{name}/fvwm"#g' $RPM_BUILD_ROOT%{_bindir}/%{name}
 
-install -d $RPM_BUILD_ROOT%{_prefix}/share/xsessions/
+install -d $RPM_BUILD_ROOT%{_prefix}/share/xsessions
 install addons/fvwm-crystal.desktop $RPM_BUILD_ROOT%{_prefix}/share/xsessions/fvwm-crystal.desktop
 
 %clean
