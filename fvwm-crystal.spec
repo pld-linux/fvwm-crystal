@@ -2,7 +2,7 @@ Summary:	Desktop Environment
 Summary(pl):	Graficzne ¶rodowisko robocze
 Name:		fvwm-crystal
 Version:	3.0.2
-Release:	2
+Release:	3
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Window Managers
@@ -43,11 +43,14 @@ wygl±daj±ce i bardzo funkcjonalne ¶rodowisko robocze.
 %install
 rm -rf $RPM_BUILD_ROOT
 
-make PREFIX=$RPM_BUILD_ROOT%{_prefix} install  
+install -d $RPM_BUILD_ROOT%{_prefix}/share/xsessions
+make install \
+	PREFIX=$RPM_BUILD_ROOT%{_prefix} \
+	XSESSIONDIRS=$RPM_BUILD_ROOT%{_prefix}/share/xsessions
 
 sed -i  's#installpath=.*$#installpath=/usr/share/fvwm-crystal/fvwm#g' $RPM_BUILD_ROOT%{_bindir}/%{name} 
-#install -d $RPM_BUILD_ROOT%{_prefix}/share/xsessions
-#install addons/fvwm-crystal.desktop $RPM_BUILD_ROOT%{_prefix}/share/xsessions/fvwm-crystal.desktop
+
+rm -rf $RPM_BUILD_ROOT%{_prefix}/share/doc/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -55,7 +58,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 # COPYING contains only note, not full GPL text
-%doc doc/* AUTHORS INSTALL COPYING NEWS README
+%doc doc/* AUTHORS INSTALL COPYING NEWS README addons/X* addons/sudo
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_datadir}/%{name}/fvwm/Applications
 %{_datadir}/%{name}/fvwm/colorsets
@@ -68,4 +71,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/fvwm/recipes
 %attr(755,root,root) %{_datadir}/%{name}/fvwm/scripts
 %{_datadir}/%{name}/fvwm/wallpapers
-#%{_prefix}/share/xsessions/fvwm-crystal.desktop
+%{_prefix}/share/xsessions/fvwm-crystal.desktop
