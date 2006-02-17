@@ -6,7 +6,7 @@ Release:	3
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Window Managers
-Source0:	http://download.gna.org/%{name}/%{version}/%{name}-%{version}.tar.gz
+Source0:	http://download.gna.org/fvwm-crystal/%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	292609d9edc1ac47b653c3b26eb7211c
 URL:		http://www.fvwm-crystal.org/
 BuildRequires:	sed >= 4.0
@@ -24,7 +24,7 @@ Requires:	sudo
 Requires:	trayer
 Requires:	xmms-shell
 Requires:	xscreensaver
-BuildArch:      noarch
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -44,7 +44,7 @@ wygl±daj±ce i bardzo funkcjonalne ¶rodowisko robocze.
 rm -rf $RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_prefix}/share/xsessions
-make install \
+%{__make} install \
 	PREFIX=$RPM_BUILD_ROOT%{_prefix} \
 	XSESSIONDIRS=$RPM_BUILD_ROOT%{_prefix}/share/xsessions
 
@@ -60,6 +60,8 @@ rm -rf $RPM_BUILD_ROOT
 # COPYING contains only note, not full GPL text
 %doc doc/* AUTHORS INSTALL COPYING NEWS README addons/X* addons/sudo
 %attr(755,root,root) %{_bindir}/*
+%dir %{_datadir}/%{name}
+%dir %{_datadir}/%{name}/fvwm
 %attr(755,root,root) %{_datadir}/%{name}/fvwm/Applications
 %{_datadir}/%{name}/fvwm/colorsets
 %{_datadir}/%{name}/fvwm/components
@@ -71,4 +73,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/fvwm/recipes
 %attr(755,root,root) %{_datadir}/%{name}/fvwm/scripts
 %{_datadir}/%{name}/fvwm/wallpapers
-%{_prefix}/share/xsessions/fvwm-crystal.desktop
+%{_datadir}/xsessions/fvwm-crystal.desktop
