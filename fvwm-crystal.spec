@@ -2,7 +2,7 @@ Summary:	Desktop Environment
 Summary(pl):	Graficzne ¶rodowisko robocze
 Name:		fvwm-crystal
 Version:	3.0.2
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Window Managers
@@ -24,6 +24,7 @@ Requires:	sudo
 Requires:	trayer
 Requires:	xmms-shell
 Requires:	xscreensaver
+BuildArch:      noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
