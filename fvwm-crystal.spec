@@ -1,13 +1,13 @@
 Summary:	Desktop Environment
 Summary(pl):	Graficzne ¶rodowisko robocze
 Name:		fvwm-crystal
-Version:	3.0.2
-Release:	3
+Version:	3.0.3
+Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Window Managers
 Source0:	http://download.gna.org/fvwm-crystal/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	292609d9edc1ac47b653c3b26eb7211c
+# Source0-md5:	66d894d3264f37db2e9c3f89d5d932d6
 URL:		http://www.fvwm-crystal.org/
 BuildRequires:	sed >= 4.0
 Requires:	ImageMagick
@@ -44,24 +44,28 @@ wygl±daj±ce i bardzo funkcjonalne ¶rodowisko robocze.
 rm -rf $RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_prefix}/share/xsessions
+install addons/fvwm-crystal.desktop $RPM_BUILD_ROOT%{_prefix}/share/xsessions
+rm -f   addons/fvwm-crystal.desktop
+
 %{__make} install \
-	PREFIX=$RPM_BUILD_ROOT%{_prefix} \
-	XSESSIONDIRS=$RPM_BUILD_ROOT%{_prefix}/share/xsessions
+	prefix=$RPM_BUILD_ROOT%{_prefix} \
+	docdir=$RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}
 
-sed -i  's#installpath=.*$#installpath=/usr/share/fvwm-crystal/fvwm#g' $RPM_BUILD_ROOT%{_bindir}/%{name} 
-
-rm -rf $RPM_BUILD_ROOT%{_prefix}/share/doc/%{name}
-
+%{__make} install-doc \
+	prefix=$RPM_BUILD_ROOT%{_prefix} \
+	docdir=$RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}
+	
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
 # COPYING contains only note, not full GPL text
-%doc doc/* AUTHORS INSTALL COPYING NEWS README addons/X* addons/sudo
+%doc doc/* AUTHORS INSTALL COPYING NEWS README
 %attr(755,root,root) %{_bindir}/*
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/fvwm
+%dir %{_datadir}/%{name}/addons
 %attr(755,root,root) %{_datadir}/%{name}/fvwm/Applications
 %{_datadir}/%{name}/fvwm/colorsets
 %{_datadir}/%{name}/fvwm/components
@@ -71,6 +75,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/fvwm/locale
 %{_datadir}/%{name}/fvwm/preferences
 %{_datadir}/%{name}/fvwm/recipes
+%{_datadir}/%{name}/addons/*
 %attr(755,root,root) %{_datadir}/%{name}/fvwm/scripts
 %{_datadir}/%{name}/fvwm/wallpapers
 %{_datadir}/xsessions/fvwm-crystal.desktop
