@@ -28,13 +28,13 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-FVWM-Crystal is a set of configuration files for F* Virtual Window 
-Manager (FVWM), which can create for you a good looking, very 
+FVWM-Crystal is a set of configuration files for F* Virtual Window
+Manager (FVWM), which can create for you a good looking, very
 functional desktop environment.
 
 %description -l pl
-FVWM-Crystal jest zestawem plików konfiguracyjnych dla F* Virtual 
-Window Manager (FVWM), dziêki którym stworzone mo¿e byæ dobrze 
+FVWM-Crystal jest zestawem plików konfiguracyjnych dla F* Virtual
+Window Manager (FVWM), dziêki którym stworzone mo¿e byæ dobrze
 wygl±daj±ce i bardzo funkcjonalne ¶rodowisko robocze.
 
 %prep
@@ -54,7 +54,7 @@ rm -f   addons/fvwm-crystal.desktop
 %{__make} install-doc \
 	prefix=$RPM_BUILD_ROOT%{_prefix} \
 	docdir=$RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}
-	
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
