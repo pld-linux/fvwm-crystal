@@ -1,5 +1,5 @@
 Summary:	Desktop Environment
-Summary(pl):	Graficzne ¶rodowisko robocze
+Summary(pl.UTF-8):   Graficzne Å›rodowisko robocze
 Name:		fvwm-crystal
 Version:	3.0.3
 Release:	1
@@ -32,10 +32,10 @@ FVWM-Crystal is a set of configuration files for F* Virtual Window
 Manager (FVWM), which can create for you a good looking, very
 functional desktop environment.
 
-%description -l pl
-FVWM-Crystal jest zestawem plików konfiguracyjnych dla F* Virtual
-Window Manager (FVWM), dziêki którym stworzone mo¿e byæ dobrze
-wygl±daj±ce i bardzo funkcjonalne ¶rodowisko robocze.
+%description -l pl.UTF-8
+FVWM-Crystal jest zestawem plikÃ³w konfiguracyjnych dla F* Virtual
+Window Manager (FVWM), dziÄ™ki ktÃ³rym stworzone moÅ¼e byÄ‡ dobrze
+wyglÄ…dajÄ…ce i bardzo funkcjonalne Å›rodowisko robocze.
 
 %prep
 %setup -q
