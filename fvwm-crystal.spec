@@ -1,5 +1,5 @@
 Summary:	Desktop Environment
-Summary(pl.UTF-8):   Graficzne środowisko robocze
+Summary(pl.UTF-8):	Graficzne środowisko robocze
 Name:		fvwm-crystal
 Version:	3.0.3
 Release:	1
