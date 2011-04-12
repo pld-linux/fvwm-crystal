@@ -1,13 +1,13 @@
 Summary:	Desktop Environment
 Summary(pl.UTF-8):	Graficzne środowisko robocze
 Name:		fvwm-crystal
-Version:	3.0.5
+Version:	3.0.6
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Window Managers
 Source0:	http://download.gna.org/fvwm-crystal/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	5f71420f3714de3fd4c4a89a5c48abf1
+# Source0-md5:	82e2800882abb2c822519f1aa4dc0c72
 URL:		http://www.fvwm-crystal.org/
 BuildRequires:	sed >= 4.0
 Requires:	ImageMagick
