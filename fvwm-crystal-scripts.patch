@@ -1,0 +1,23 @@
+diff -NurpP --minimal fvwm-crystal-3.0.6/fvwm/components/scripts.orig/FvwmScript-CpuTemp fvwm-crystal-3.0.6/fvwm/components/scripts/FvwmScript-CpuTemp
+--- fvwm-crystal-3.0.6/fvwm/components/scripts.orig/FvwmScript-CpuTemp	2008-06-23 22:43:48.000000000 +0200
++++ fvwm-crystal-3.0.6/fvwm/components/scripts/FvwmScript-CpuTemp	2012-03-22 21:41:30.619849047 +0100
+@@ -10,7 +10,8 @@ Colorset 1
+ Init
+ Begin
+   Set $temp_prev = 1
+-  Set $temp = (GetOutput {cat /proc/acpi/thermal_zone/TH*/temperature} 1 2)
++  Set $tempp = (GetOutput {cat /sys/devices/platform/coretemp.0/temp?_input /proc/acpi/thermal_zone/TH*/temperature /sys/devices/virtual/thermal/thermal_zone0/temp 2>/dev/null| sort -rn | head -n 1 } 1 1)
++  Set $temp = (Div $tempp 1000)
+   Set $tmp = $temp °C
+   ChangeTitle 1 $tmp
+ End
+@@ -19,7 +20,8 @@ PeriodicTasks
+ Begin 
+  If (RemainderOfDiv (GetTime) 2)==0 Then
+  Begin
+-  Set $temp = (GetOutput {cat /proc/acpi/thermal_zone/TH*/temperature} 1 2) 
++  Set $tempp = (GetOutput {cat /sys/devices/platform/coretemp.0/temp?_input /proc/acpi/thermal_zone/TH*/temperature /sys/devices/virtual/thermal/thermal_zone0/temp 2>/dev/null| sort -rn | head -n 1 } 1 1)
++  Set $temp = (Div $tempp 1000)
+   Set $tmp = $temp °C
+ 
+   If $temp==$temp_prev Then

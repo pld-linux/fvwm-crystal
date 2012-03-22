@@ -2,12 +2,13 @@ Summary:	Desktop Environment
 Summary(pl.UTF-8):	Graficzne środowisko robocze
 Name:		fvwm-crystal
 Version:	3.0.6
-Release:	1
+Release:	3
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Window Managers
 Source0:	http://download.gna.org/fvwm-crystal/%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	82e2800882abb2c822519f1aa4dc0c72
+Patch0:		%{name}-scripts.patch
 URL:		http://www.fvwm-crystal.org/
 BuildRequires:	sed >= 4.0
 Requires:	ImageMagick
@@ -21,9 +22,11 @@ Requires:	python
 Requires:	rox
 Requires:	scrot
 Requires:	sudo
-Requires:	trayer
-Requires:	xmms-shell
 Requires:	xscreensaver
+Suggests:	trayer
+Suggests:	xmms-shell
+Suggests:	urxvt
+Suggests:	mrxvt
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -39,6 +42,7 @@ wyglądające i bardzo funkcjonalne środowisko robocze.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
