@@ -1,0 +1,20 @@
+--- fvwm-crystal-3.1.12/fvwm/components/scripts/FvwmScript-CpuTemp~	2013-05-05 16:57:11.000000000 +0200
++++ fvwm-crystal-3.1.12/fvwm/components/scripts/FvwmScript-CpuTemp	2013-05-08 16:33:06.954366535 +0200
+@@ -10,7 +10,7 @@
+ Init
+ Begin
+   Set $temp_prev = 1
+-  Set $temp = (GetOutput {sed 's:...$::' </sys/class/hwmon/hwmon0/temp1_input} 1 1)
++  Set $temp = (GetOutput {cat /sys/class/hwmon/hwmon0/temp1_input /sys/class/hwmon/hwmon0/device/temp?_input 2>/dev/null| sed 's:...$::' | sort -rn | head -n1} 1 1)
+   Set $tmp = $temp °C
+   ChangeTitle 1 $tmp
+ End
+@@ -19,7 +19,7 @@
+ Begin 
+  If (RemainderOfDiv (GetTime) 2)==0 Then
+  Begin
+-  Set $temp = (GetOutput {sed 's:...$::' </sys/class/hwmon/hwmon0/temp1_input} 1 1) 
++  Set $temp = (GetOutput {cat /sys/class/hwmon/hwmon0/temp1_input /sys/class/hwmon/hwmon0/device/temp?_input 2>/dev/null| sed 's:...$::' | sort -rn | head -n1} 1 1) 
+   Set $tmp = $temp °C
+ 
+   If $temp==$temp_prev Then

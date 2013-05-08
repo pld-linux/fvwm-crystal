@@ -1,32 +1,37 @@
 Summary:	Desktop Environment
 Summary(pl.UTF-8):	Graficzne środowisko robocze
 Name:		fvwm-crystal
-Version:	3.0.6
-Release:	3
+Version:	3.1.12
+Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Window Managers
-Source0:	http://download.gna.org/fvwm-crystal/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	82e2800882abb2c822519f1aa4dc0c72
-Patch0:		%{name}-scripts.patch
+Source0:	http://downloads.sourceforge.net/fvwm-crystal/%{name}-%{version}.tar.gz
+# Source0-md5:	1588fbf023092068708d7ff722487149
+Patch0:		%{name}-temperature.patch
 URL:		http://www.fvwm-crystal.org/
 BuildRequires:	sed >= 4.0
 Requires:	ImageMagick
-Requires:	aterm
-Requires:	fvwm2 >= 2.5.13
+Requires:	Thunar
+Requires:	alsa-utils
+Requires:	awk
+Requires:	bc
+Requires:	coreutils
+Requires:	feh
+Requires:	fvwm2 >= 2.6.5
 Requires:	fvwm2-perl
-Requires:	habak
-Requires:	mpc
-Requires:	mpd
-Requires:	python
-Requires:	rox
-Requires:	scrot
+Requires:	gksu
+Requires:	mplayer
+Requires:	mrxvt
+Requires:	sed
+Requires:	stalonetray
 Requires:	sudo
+Requires:	urxvt
+Requires:	xorg-app-transset
+Requires:	xorg-app-xcompmgr
+Requires:	xorg-app-xrandr
+Requires:	xorg-app-xwd
 Requires:	xscreensaver
-Suggests:	trayer
-Suggests:	xmms-shell
-Suggests:	urxvt
-Suggests:	mrxvt
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -44,20 +49,25 @@ wyglądające i bardzo funkcjonalne środowisko robocze.
 %setup -q
 %patch0 -p1
 
+%build
+
 %install
 rm -rf $RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT%{_prefix}/share/xsessions
-install addons/fvwm-crystal.desktop $RPM_BUILD_ROOT%{_prefix}/share/xsessions
-rm -f   addons/fvwm-crystal.desktop
+install -dv $RPM_BUILD_ROOT%{_bindir}
+install -dv $RPM_BUILD_ROOT%{_datadir}/%{name}/fvwm
+install -dv $RPM_BUILD_ROOT%{_datadir}/xsessions
+install -dv $RPM_BUILD_ROOT%{_sysconfdir}/X11/Sessions
+install -dv $RPM_BUILD_ROOT%{_mandir}/man1
+install -dv $RPM_BUILD_ROOT%{_docdir}/%{name}
+install -dv $RPM_BUILD_ROOT%{_datadir}/%{name}/addons
 
-%{__make} install \
-	prefix=$RPM_BUILD_ROOT%{_prefix} \
-	docdir=$RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}
-
-%{__make} install-doc \
-	prefix=$RPM_BUILD_ROOT%{_prefix} \
-	docdir=$RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}
+cp -v bin/fvwm-crystal* $RPM_BUILD_ROOT%{_bindir}
+cp -rv fvwm/* $RPM_BUILD_ROOT%{_datadir}/%{name}/fvwm
+cp -v addons/fvwm-crystal $RPM_BUILD_ROOT%{_sysconfdir}/X11/Sessions
+cp -v addons/fvwm-crystal.desktop $RPM_BUILD_ROOT%{_datadir}/xsessions
+cp -v man/* $RPM_BUILD_ROOT%{_mandir}/man1
+cp -rv addons/* $RPM_BUILD_ROOT%{_datadir}/%{name}/addons
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -65,11 +75,12 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 # COPYING contains only note, not full GPL text
-%doc doc/* AUTHORS INSTALL COPYING NEWS README
+%doc doc/* AUTHORS Contribute COPYING NEWS ChangeLog Export.README README INSTALL
 %attr(755,root,root) %{_bindir}/*
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/fvwm
 %dir %{_datadir}/%{name}/addons
+%dir %{_sysconfdir}/X11/Sessions
 %attr(755,root,root) %{_datadir}/%{name}/fvwm/Applications
 %{_datadir}/%{name}/fvwm/colorsets
 %{_datadir}/%{name}/fvwm/components
@@ -83,3 +94,5 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_datadir}/%{name}/fvwm/scripts
 %{_datadir}/%{name}/fvwm/wallpapers
 %{_datadir}/xsessions/fvwm-crystal.desktop
+%{_sysconfdir}/X11/Sessions/fvwm-crystal
+%{_mandir}/man1/*.1*
