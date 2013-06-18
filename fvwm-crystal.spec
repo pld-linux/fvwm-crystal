@@ -1,13 +1,13 @@
 Summary:	Desktop Environment
 Summary(pl.UTF-8):	Graficzne środowisko robocze
 Name:		fvwm-crystal
-Version:	3.1.12
+Version:	3.2.1
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Window Managers
 Source0:	http://downloads.sourceforge.net/fvwm-crystal/%{name}-%{version}.tar.gz
-# Source0-md5:	1588fbf023092068708d7ff722487149
+# Source0-md5:	80027c0f487ebc1826659850c117ceb3
 Patch0:		%{name}-temperature.patch
 URL:		http://www.fvwm-crystal.org/
 BuildRequires:	sed >= 4.0
@@ -64,8 +64,6 @@ install -dv $RPM_BUILD_ROOT%{_datadir}/%{name}/addons
 
 cp -v bin/fvwm-crystal* $RPM_BUILD_ROOT%{_bindir}
 cp -rv fvwm/* $RPM_BUILD_ROOT%{_datadir}/%{name}/fvwm
-cp -v addons/fvwm-crystal $RPM_BUILD_ROOT%{_sysconfdir}/X11/Sessions
-cp -v addons/fvwm-crystal.desktop $RPM_BUILD_ROOT%{_datadir}/xsessions
 cp -v man/* $RPM_BUILD_ROOT%{_mandir}/man1
 cp -rv addons/* $RPM_BUILD_ROOT%{_datadir}/%{name}/addons
 
@@ -93,6 +91,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/addons/*
 %attr(755,root,root) %{_datadir}/%{name}/fvwm/scripts
 %{_datadir}/%{name}/fvwm/wallpapers
-%{_datadir}/xsessions/fvwm-crystal.desktop
-%{_sysconfdir}/X11/Sessions/fvwm-crystal
 %{_mandir}/man1/*.1*
